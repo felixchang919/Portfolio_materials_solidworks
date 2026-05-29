@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDK3D設計作品展示</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f5f5f7;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 { color: #1d1d1f; margin-bottom: 5px; text-align: center; }
+        .subtitle { color: #86868b; margin-bottom: 40px; font-size: 1rem; text-align: center; }
+        
+        .version-section {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-bottom: 35px;
+            box-sizing: border-box;
+        }
+        
+        .version-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #1d1d1f;
+            border-left: 5px solid #0071e3;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .version-desc {
+            color: #6e6e73;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .pair-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .pair-grid { grid-template-columns: 1fr; }
+        }
+        
+        .model-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 10px;
+        }
+        
+        .model-label {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        
+        /* 3D 畫布底色，與原本的 model-viewer 樣式保持一致 */
+        .stl-viewer {
+            width: 100%;
+            height: 350px;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>夾爪機構設計作品集</h1>
+    <div class="subtitle">💡 提示：可用滑鼠拖曳旋轉各版本的 3D 模型進行比對</div>
+
+    <div class="version-section">
+        <div class="version-title">Version 1 - 初始原型設計</div>
+        <div class="version-desc">說明：此版本為初代構想，因厚度太厚不易控制的緣故，而暫停使用</div>
+        <div class="pair-grid">
+            <div class="model-container">
+                <div class="stl-viewer" data-src="./V1_l.stl"></div>
+                <div class="model-label">V1 - 左爪 (Left)</div>
+            </div>
+            <div class="model-container">
+                <div class="stl-viewer" data-src="./V1_r.stl"></div>
+                <div class="model-label">V1 - 右爪 (Right)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="version-section">
+        <div class="version-title">Version 2 - 厚度縮減與輕量化</div>
+        <div class="version-desc">說明：針對第一代不良之處進行厚度縮減，並在非受力區進行輕量化挖空的優化。</div>
+        <div class="pair-grid">
+            <div class="model-container">
+                <div class="stl-viewer" data-src="./V2_l.stl"></div>
+                <div class="model-label">V2 - 左爪 (Left)</div>
+            </div>
+            <div class="model-container">
+                <div class="stl-viewer" data-src="./V2_r.stl"></div>
+                <div class="model-label">V2 - 右爪 (Right)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="version-section">
+        <div class="version-title">Version 3 - 結構加固</div>
+        <div class="version-desc">說明：因材料在受力後有斷裂及彎曲現象，我在脆弱的地方做了補強。</div>
+        <div class="pair-grid">
+            <div class="model-container">
+                <div class="stl-viewer" data-src="./V3_l.stl"></div>
+                <div class="model-label">V3 - 左爪 (Left)</div>
+            </div>
+            <div class="model-container">
+                <div class="stl-viewer" data-src="./V3_r.stl"></div>
+                <div class="model-label">V3 - 右爪 (Right)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="version-section">
+        <div class="version-title">Version 4 - 最終定型版本</div>
+        <div class="version-desc">說明：調整在實際上的誤差與做細微改良。</div>
+        <div class="pair-grid">
+            <div class="model-container">
+                <div class="stl-viewer" data-src="./V4_l.stl"></div>
+                <div class="model-label">V4 - 左爪 (Left)</div>
+            </div>
+            <div class="model-container">
+                <div class="stl-viewer" data-src="./V4_r.stl"></div>
+                <div class="model-label">V4 - 右爪 (Right)</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.stl-viewer').forEach(container => {
+            const fileUrl = container.getAttribute('data-src');
+            
+            // 建立場景與底色
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xe2e8f0);
+            
+            // 建立相機
+            const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(0, 0, 80);
+            
+            // 建立渲染器
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+            
+            // 滑鼠/手指互動控制器
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            
+            // 設置工程環境光源
+            const ambientLight = new THREE.AmbientLight(0x777777);
+            scene.add(ambientLight);
+            
+            const dirLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+            dirLight1.position.set(1, 1, 1).normalize();
+            scene.add(dirLight1);
+            
+            const dirLight2 = new THREE.DirectionalLight(0x555555, 0.4);
+            dirLight2.position.set(-1, -1, 1).normalize();
+            scene.add(dirLight2);
+            
+            // 執行 STL 專用載入與解析
+            const loader = new THREE.STLLoader();
+            loader.load(fileUrl, function (geometry) {
+                geometry.computeVertexNormals();
+                geometry.center(); // 自動居中模型
+                
+                // 霧面工程金屬感材質
+                const material = new THREE.MeshStandardMaterial({ 
+                    color: 0x94a3b8, 
+                    roughness: 0.4,
+                    metalness: 0.2
+                });
+                
+                const mesh = new THREE.Mesh(geometry, material);
+                
+                // 依模型大小自動縮放以完美自適應視窗
+                geometry.computeBoundingSphere();
+                const radius = geometry.boundingSphere.radius;
+                mesh.scale.setScalar(30 / radius); 
+                
+                scene.add(mesh);
+                
+                // 動畫渲染迴圈
+                function animate() {
+                    requestAnimationFrame(animate);
+                    mesh.rotation.y += 0.005; // 模型自動緩慢自轉
+                    controls.update();
+                    renderer.render(scene, camera);
+                }
+                animate();
+                
+            }, undefined, function (error) {
+                console.error("模型加載錯誤路徑: " + fileUrl, error);
+            });
+            
+            // 監聽並自動適應視窗縮放
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        });
+    </script>
+</body>
+</html>
