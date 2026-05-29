@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDK3D設計作品展示</title>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f5f5f7;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 { color: #1d1d1f; margin-bottom: 5px; text-align: center; }
+        .subtitle { color: #86868b; margin-bottom: 40px; font-size: 1rem; text-align: center; }
+        
+        .version-section {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-bottom: 35px;
+            box-sizing: border-box;
+        }
+        
+        .version-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #1d1d1f;
+            border-left: 5px solid #0071e3;
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .version-desc {
+            color: #6e6e73;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .pair-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .pair-grid { grid-template-columns: 1fr; }
+        }
+        
+        .model-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 10px;
+        }
+        
+        .model-label {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        
+        /* 增加明顯的底色，確認區塊有正確載入 */
+        model-viewer {
+            width: 100%;
+            height: 350px;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>夾爪機構設計作品集</h1>
+    <div class="subtitle">💡 提示：可用滑鼠拖曳旋轉各版本的 3D 模型進行比對</div>
+
+    <div class="version-section">
+        <div class="version-title">Version 1 - 初始原型設計</div>
+        <div class="version-desc">說明：此版本為初代構想，因厚度太厚不易控制的緣故，而暫停使用</div>
+        <div class="pair-grid">
+            <div class="model-container">
+                <model-viewer src="./V1_l.stl" camera-controls shadow-intensity="1" auto-rotate interaction-prompt="none"></model-viewer>
+                <div class="model-label">V1 - 左爪 (Left)</div>
+            </div>
+            <div class="model-container">
+                <model-viewer src="./V1_r.stl" camera-controls shadow-intensity="1" auto-rotate interaction-prompt="none"></model-viewer>
+                <div class="model-label">V1 - 右爪 (Right)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="version-section">
+        <div class="version-title">Version 2 - 厚度縮減與輕量化</div>
+        <div class="version-desc">說明：針對第一代不良之處進行厚度縮減，並在非受力區進行輕量化挖空的優化。</div>
+        <div class="pair-grid">
+            <div class="model-container">
+                <model-viewer src="./V2_l.stl" camera-controls shadow-intensity="1" auto-rotate interaction-prompt="none"></model-viewer>
+                <div class="model-label">V2 - 左爪 (Left)</div>
+            </div>
+            <div class="model-container">
+                <model-viewer src="./V2_r.stl" camera-controls shadow-intensity="1" auto-rotate interaction-prompt="none"></model-viewer>
+                <div class="model-label">V2 - 右爪 (Right)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="version-section">
+        <div class="version-title">Version 3 - 結構加固</div>
+        <div class="version-desc">說明：因材料在受力後有斷裂及彎曲現象，我在脆弱的地方做了補強。</div>
+        <div class="pair-grid">
+            <div class="model-container">
+                <model-viewer src="./V3_l.stl" camera-controls shadow-intensity="1" auto-rotate interaction-prompt="none"></model-viewer>
+                <div class="model-label">V3 - 左爪 (Left)</div>
+            </div>
+            <div class="model-container">
+                <model-viewer src="./V3_r.stl" camera-controls shadow-intensity="1" auto-rotate interaction-prompt="none"></model-viewer>
+                <div class="model-label">V3 - 右爪 (Right)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="version-section">
+        <div class="version-title">Version 4 - 最終定型版本</div>
+        <div class="version-desc">說明：調整在實際上的誤差與做細微改良。</div>
+        <div class="pair-grid">
+            <div class="model-container">
+                <model-viewer src="./V4_l.stl" camera-controls shadow-intensity="1" auto-rotate interaction-prompt="none"></model-viewer>
+                <div class="model-label">V4 - 左爪 (Left)</div>
+            </div>
+            <div class="model-container">
+                <model-viewer src="./V4_r.stl" camera-controls shadow-intensity="1" auto-rotate interaction-prompt="none"></model-viewer>
+                <div class="model-label">V4 - 右爪 (Right)</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
